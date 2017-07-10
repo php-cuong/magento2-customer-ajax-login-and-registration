@@ -4,7 +4,7 @@
  * @Author: Ngo Quang Cuong
  * @Date:   2017-07-10 11:01:03
  * @Last Modified by:   nquangcuong
- * @Last Modified time: 2017-07-10 14:28:40
+ * @Last Modified time: 2017-07-10 14:53:06
  * @website: http://giaphugroup.com
  */
 
@@ -18,9 +18,15 @@ class AjaxLogin extends \Magento\Framework\View\Element\Template
     protected $_customerUrl;
 
     /**
+     * @var \Magento\Framework\App\Http\Context
+     */
+    protected $httpContext;
+
+    /**
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param \Magento\Customer\Model\Session $customerSession
      * @param \Magento\Customer\Model\Url $customerUrl
+     * @param \Magento\Framework\App\Http\Context $httpContext
      * @param array $data
      */
     public function __construct(
