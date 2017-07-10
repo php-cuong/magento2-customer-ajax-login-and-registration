@@ -1,6 +1,9 @@
 # magento2-customer-ajax-login
 Magento 2 Customer Ajax Login
 
+# See the video how I can create this extension
+https://www.youtube.com/watch?v=faSk7sB04mg
+
 # Snapshot
 
 ## The popup customer login
