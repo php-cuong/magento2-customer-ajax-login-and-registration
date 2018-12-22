@@ -2,8 +2,8 @@
 Magento 2 Customer Ajax Login and Registration
 
 # See the video about this tutorial
-- Youtube: https://www.youtube.com/watch?v=faSk7sB04mg
-- Facebook:
+- Youtube: https://www.youtube.com/watch?v=UZTJw51m3Xo&index=41&list=PL98CDCbI3TNvPczWSOnpaMoyxVISLVzYQ
+- Facebook: https://www.facebook.com/giaphugroupcom/videos/1997540213689513/
 
 # Snapshot
 
