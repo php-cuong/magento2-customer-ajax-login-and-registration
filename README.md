@@ -1,15 +1,16 @@
-# magento2-customer-ajax-login
-Magento 2 Customer Ajax Login
+# magento2-customer-ajax-login-and-registration
+Magento 2 Customer Ajax Login and Registration
 
-# See the video how I can create this extension
-https://www.youtube.com/watch?v=faSk7sB04mg
+# See the video about this tutorial
+- Youtube: https://www.youtube.com/watch?v=faSk7sB04mg
+- Facebook:
 
 # Snapshot
 
-## The popup customer login
+## The popup customer login form
 
-![ScreenShot](https://raw.githubusercontent.com/php-cuong/magento2-customer-ajax-login/master/Snapshot/form-login.png)
+![ScreenShot](https://raw.githubusercontent.com/php-cuong/magento2-customer-ajax-login-and-registration/master/Snapshot/login-form.png)
 
-## The error massages
+## The popup customer registration form
 
-![ScreenShot](https://raw.githubusercontent.com/php-cuong/magento2-customer-ajax-login/master/Snapshot/login-errors.png)
+![ScreenShot](https://raw.githubusercontent.com/php-cuong/magento2-customer-ajax-login-and-registration/master/Snapshot/registration-form.png)

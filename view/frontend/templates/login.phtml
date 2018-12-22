@@ -1,0 +1,87 @@
+<?php
+/**
+ * GiaPhuGroup Co., Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the GiaPhuGroup.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.giaphugroup.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    PHPCuong
+ * @package     PHPCuong_CustomerAccount
+ * @copyright   Copyright (c) 2018-2019 GiaPhuGroup Co., Ltd. All rights reserved. (http://www.giaphugroup.com/)
+ * @license     https://www.giaphugroup.com/LICENSE.txt
+ */
+ /** @var \PHPCuong\CustomerAccount\Block\Form\Login $block */
+?>
+<?php if (!$block->customerIsAlreadyLoggedIn()): ?>
+    <style>
+        .customer-popup-login {
+            display: none;
+        }
+        .or-another-selection {
+            display: inline-block;
+            padding-right: 5px;
+        }
+        @media(max-width: 767px) {
+            .or-another-selection {
+                display: block;
+                text-align: center;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+    <div id="customer-popup-login" class="customer-popup-login">
+        <div class="block block-customer-login">
+            <div class="block-content" aria-labelledby="block-customer-popup-login-heading">
+                <form class="form form-login"
+                      action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>"
+                      method="post"
+                      id="customer-popup-login-form"
+                      data-mage-init='{"validation":{}}'>
+                    <?php echo $block->getBlockHtml('formkey'); ?>
+                    <input type="hidden" name="redirect_url" value="<?php echo $this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]); ?>" />
+                    <fieldset class="fieldset login" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
+                        <div class="field note"><?php /* @escapeNotVerified */ echo __('If you have an account, sign in with your email address.') ?></div>
+                        <div class="messages"></div>
+                        <div class="field email required">
+                            <label class="label" for="email"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label>
+                            <div class="control">
+                                <input name="username" value="" <?php if ($block->isAutocompleteDisabled()) :?> autocomplete="off"<?php endif; ?> id="email-login" type="email" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" data-validate="{required:true, 'validate-email':true}">
+                            </div>
+                        </div>
+                        <div class="field password required">
+                            <label for="pass" class="label"><span><?php /* @escapeNotVerified */ echo __('Password') ?></span></label>
+                            <div class="control">
+                                <input name="password" type="password" <?php if ($block->isAutocompleteDisabled()) :?> autocomplete="off"<?php endif; ?> class="input-text" id="pass-login" title="<?php /* @escapeNotVerified */ echo __('Password') ?>" data-validate="{required:true}" >
+                            </div>
+                        </div>
+                        <div class="actions-toolbar">
+                            <div class="primary"><button type="submit" class="action login primary" name="send" id="send2-login"><span><?php /* @escapeNotVerified */ echo __('Sign In') ?></span></button></div>
+                            <?php if ($block->getRegistration()->isAllowed()): ?>
+                                <div class="or-another-selection"><?php echo __('or'); ?></div>
+                                <div class="secondary"><a class="action remind" href="<?php /* @escapeNotVerified */ echo $block->getCustomerRegistrationUrl() ?>" id="customer-popup-registration"><span><?php /* @escapeNotVerified */ echo __('Create an Account') ?></span></a></div>
+                            <?php endif; ?>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <script type="text/x-magento-init">
+            {
+                "#customer-popup-login": {
+                    "PHPCuong_CustomerAccount/js/action/customer-authentication-popup": {
+                        "popupTitle": "<?php /* @escapeNotVerified */ echo __('Sign In') ?>",
+                        "innerWidth": "400"
+                    }
+                }
+            }
+        </script>
+    </div>
+<?php endif; ?>

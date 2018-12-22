@@ -1,15 +1,26 @@
 <?php
-
 /**
- * @Author: Ngo Quang Cuong
- * @Date:   2017-07-10 10:55:59
- * @Last Modified by:   nquangcuong
- * @Last Modified time: 2017-07-10 15:05:28
- * @website: http://giaphugroup.com
+ * GiaPhuGroup Co., Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the GiaPhuGroup.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.giaphugroup.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    PHPCuong
+ * @package     PHPCuong_CustomerAccount
+ * @copyright   Copyright (c) 2018-2019 GiaPhuGroup Co., Ltd. All rights reserved. (http://www.giaphugroup.com/)
+ * @license     https://www.giaphugroup.com/LICENSE.txt
  */
 
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'PHPCuong_CustomerAjaxLogin',
+    'PHPCuong_CustomerAccount',
     __DIR__
 );

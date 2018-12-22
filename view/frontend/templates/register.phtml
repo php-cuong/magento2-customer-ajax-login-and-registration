@@ -1,0 +1,99 @@
+<?php
+/**
+ * GiaPhuGroup Co., Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the GiaPhuGroup.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.giaphugroup.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    PHPCuong
+ * @package     PHPCuong_CustomerAccount
+ * @copyright   Copyright (c) 2018-2019 GiaPhuGroup Co., Ltd. All rights reserved. (http://www.giaphugroup.com/)
+ * @license     https://www.giaphugroup.com/LICENSE.txt
+ */
+ /** @var \PHPCuong\CustomerAccount\Block\Form\Register $block */
+?>
+<?php if (!$block->customerIsAlreadyLoggedIn() && $block->getRegistration()->isAllowed()): ?>
+    <style>
+        .customer-popup-register {
+            display: none;
+        }
+    </style>
+    <div id="customer-popup-register" class="customer-popup-register">
+        <form class="form-create-account" action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>" method="post" id="customer-popup-form-register" enctype="multipart/form-data" autocomplete="off" data-mage-init='{"validation":{}}'>
+            <?php echo $block->getBlockHtml('formkey'); ?>
+            <input type="hidden" name="redirect_url" value="<?php echo $this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]); ?>" />
+            <div class="messages"></div>
+            <p><?php /* @escapeNotVerified */ echo __('Creating an account has many benefits: check out faster, keep more than one address, track orders and more.') ?></p>
+            <fieldset class="fieldset create info">
+                <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Personal Information') ?></span></legend><br>
+                <?php echo $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Name')->setObject($block->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
+                <?php if ($block->isNewsletterEnabled()): ?>
+                    <div class="field choice newsletter">
+                        <input type="checkbox" name="is_subscribed" title="<?php /* @escapeNotVerified */ echo __('Sign Up for Newsletter') ?>" value="1" id="popup-is_subscribed" class="checkbox">
+                        <label for="is_subscribed" class="label"><span><?php /* @escapeNotVerified */ echo __('Sign Up for Newsletter') ?></span></label>
+                    </div>
+                <?php endif ?>
+            </fieldset>
+            <fieldset class="fieldset create account" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
+                <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Sign-in Information') ?></span></legend><br>
+                <div class="field required">
+                    <label for="popup-email_address" class="label"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label>
+                    <div class="control">
+                        <input type="email" name="email" autocomplete="email" id="popup-email_address" value="" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" class="input-text" data-validate="{required:true, 'validate-email':true}">
+                    </div>
+                </div>
+                <div class="field password required" data-mage-init='{"passwordStrengthIndicator": {}}'>
+                    <label for="password" class="label"><span><?php /* @escapeNotVerified */ echo __('Password') ?></span></label>
+                    <div class="control">
+                        <input type="password" name="password" id="password"
+                               title="<?php /* @escapeNotVerified */ echo __('Password') ?>"
+                               class="input-text"
+                               data-password-min-length="<?php echo $block->escapeHtml($block->getMinimumPasswordLength()) ?>"
+                               data-password-min-character-sets="<?php echo $block->escapeHtml($block->getRequiredCharacterClassesNumber()) ?>"
+                               data-validate="{required:true, 'validate-customer-password':true}"
+                               autocomplete="off">
+                        <div id="password-strength-meter-container" data-role="password-strength-meter" >
+                            <div id="password-strength-meter" class="password-strength-meter">
+                                <?php /* @escapeNotVerified */ echo __('Password Strength'); ?>:
+                                <span id="password-strength-meter-label" data-role="password-strength-meter-label" >
+                                    <?php /* @escapeNotVerified */ echo __('No Password'); ?>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field confirmation required">
+                    <label for="password-confirmation" class="label"><span><?php /* @escapeNotVerified */ echo __('Confirm Password') ?></span></label>
+                    <div class="control">
+                        <input type="password" name="password_confirmation" title="<?php /* @escapeNotVerified */ echo __('Confirm Password') ?>" id="password-confirmation" class="input-text" data-validate="{required:true, equalTo:'#password'}" autocomplete="off">
+                    </div>
+                </div>
+            </fieldset>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit" class="action submit primary" title="<?php /* @escapeNotVerified */ echo __('Create an Account') ?>"><span><?php /* @escapeNotVerified */ echo __('Create an Account') ?></span></button>
+                </div>
+                <div class="or-another-selection"><?php echo __('or'); ?></div>
+                <div class="secondary"><a class="action remind" href="<?php /* @escapeNotVerified */ echo $block->getBackUrl() ?>" id="customer-popup-sign-in"><span><?php /* @escapeNotVerified */ echo __('Sign In') ?></span></a></div>
+            </div>
+        </form>
+        <script type="text/x-magento-init">
+            {
+                "#customer-popup-register": {
+                    "PHPCuong_CustomerAccount/js/action/customer-authentication-popup": {
+                        "popupTitle": "<?php /* @escapeNotVerified */ echo __('Create an Account'); ?>",
+                        "innerWidth": "600"
+                    }
+                }
+            }
+        </script>
+    </div>
+<?php endif; ?>

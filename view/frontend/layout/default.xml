@@ -1,6 +1,40 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * GiaPhuGroup Co., Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the GiaPhuGroup.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.giaphugroup.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    PHPCuong
+ * @package     PHPCuong_CustomerAccount
+ * @copyright   Copyright (c) 2018-2019 GiaPhuGroup Co., Ltd. All rights reserved. (http://www.giaphugroup.com/)
+ * @license     https://www.giaphugroup.com/LICENSE.txt
+ */
+-->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <referenceContainer name="header.panel">
-        <block class="PHPCuong\CustomerAjaxLogin\Block\Customer\AjaxLogin" name="customer.ajax.login" template="PHPCuong_CustomerAjaxLogin::form/login.phtml" />
-    </referenceContainer>
+    <body>
+        <referenceBlock name="register-link">
+            <arguments>
+                <argument name="class" xsi:type="string">customer-register-link</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name="authorization-link-login">
+            <arguments>
+                <argument name="class" xsi:type="string">customer-login-link</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="before.body.end">
+            <block class="PHPCuong\CustomerAccount\Block\Form\Login" name="customer-popup-login" template="PHPCuong_CustomerAccount::login.phtml" />
+            <block class="PHPCuong\CustomerAccount\Block\Form\Register" name="customer-popup-register" template="PHPCuong_CustomerAccount::register.phtml" />
+        </referenceContainer>
+    </body>
 </page>
