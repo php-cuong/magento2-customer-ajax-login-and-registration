@@ -27,7 +27,7 @@
         <section name="cart"/>
         <section name="customer"/>
     </action>
-    <action name="phpcuong/customer_ajax/login">
+    <action name="customer/ajax/login">
         <section name="checkout-data"/>
         <section name="cart"/>
         <section name="customer"/>
