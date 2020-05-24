@@ -33,7 +33,8 @@ define([
             login: '#customer-popup-login',
             nextRegister: '#customer-popup-registration',
             register: '#customer-popup-register',
-            prevLogin: '#customer-popup-sign-in'
+            prevLogin: '#customer-popup-sign-in',
+            forgotpassword: '#customer-popup-forgotpassword'
         },
 
         /**
@@ -48,23 +49,34 @@ define([
                     innerScroll: true,
                     title: this.options.popupTitle,
                     buttons: false,
-                    modalClass : 'customer-popup'
+                    modalClass: 'customer-popup'
                 };
 
             modal(authentication_options, this.element);
 
             // Show the login form in a popup when clicking on the sign in text
-            $('body').on('click', '.customer-login-link, '+self.options.prevLogin, function() {
+            $('body').on('click', '.customer-login-link, ' + self.options.prevLogin, function () {
                 $(self.options.register).modal('closeModal');
+                $('#customer-popup-forgotpassword').modal('closeModal');
                 $(self.options.login).modal('openModal');
                 self._setStyleCss();
                 return false;
             });
 
             // Show the registration form in a popup when clicking on the create an account text
-            $('body').on('click', '.customer-register-link, '+self.options.nextRegister, function() {
+            $('body').on('click', '.customer-register-link, ' + self.options.nextRegister, function () {
                 $(self.options.login).modal('closeModal');
+                $('#customer-popup-forgotpassword').modal('closeModal');
                 $(self.options.register).modal('openModal');
+                self._setStyleCss(self.options.innerWidth);
+                return false;
+            });
+
+            // Show the forgot password form in a popup when clicking on the forgot your password text
+            $('body').on('click', '#customer-popup-forgot-password', function () {
+                $(self.options.login).modal('closeModal');
+                $(self.options.register).modal('closeModal');
+                $('#customer-popup-forgotpassword').modal('openModal');
                 self._setStyleCss(self.options.innerWidth);
                 return false;
             });
@@ -77,10 +89,12 @@ define([
          * Set width of the popup
          * @private
          */
-        _setStyleCss: function(width) {
+        _setStyleCss: function (width) {
             width = width || 400;
             if (window.innerWidth > 786) {
-                this.element.parent().parent('.modal-inner-wrap').css({'max-width': width+'px'});
+                this.element.parent().parent('.modal-inner-wrap').css({
+                    'max-width': width + 'px'
+                });
             }
         },
 
@@ -88,11 +102,13 @@ define([
          * Reset width of the popup
          * @private
          */
-        _resetStyleCss: function() {
+        _resetStyleCss: function () {
             var self = this;
-            $( window ).resize(function() {
+            $(window).resize(function () {
                 if (window.innerWidth <= 786) {
-                    self.element.parent().parent('.modal-inner-wrap').css({'max-width': 'initial'});
+                    self.element.parent().parent('.modal-inner-wrap').css({
+                        'max-width': 'initial'
+                    });
                 } else {
                     self._setStyleCss(self.options.innerWidth);
                 }
@@ -103,7 +119,7 @@ define([
          * Submit data by Ajax
          * @private
          */
-        _ajaxSubmit: function() {
+        _ajaxSubmit: function () {
             var self = this,
                 form = this.element.find('form'),
                 inputElement = form.find('input');
@@ -124,7 +140,7 @@ define([
                             success: function (response) {
                                 self._showResponse(response, form.find('input[name="redirect_url"]').val());
                             },
-                            error: function() {
+                            error: function () {
                                 self._showFailingMessage();
                             }
                         });
@@ -155,8 +171,8 @@ define([
          * Display messages on the screen
          * @private
          */
-        _displayMessages: function(className, message) {
-            $('<div class="message '+className+'"><div>'+message+'</div></div>').appendTo(this.element.find('.messages'));
+        _displayMessages: function (className, message) {
+            $('<div class="message ' + className + '"><div>' + message + '</div></div>').appendTo(this.element.find('.messages'));
         },
 
         /**
@@ -165,7 +181,7 @@ define([
          * @param {Object} response
          * @param {String} locationHref
          */
-        _showResponse: function(response, locationHref) {
+        _showResponse: function (response, locationHref) {
             var self = this,
                 timeout = 800;
             this.element.find('.messages').html('');
@@ -175,7 +191,7 @@ define([
                 this._displayMessages('message-success success', response.message);
             }
             this.element.find('.messages .message').show();
-            setTimeout(function() {
+            setTimeout(function () {
                 if (!response.errors) {
                     self.element.modal('closeModal');
                     window.location.href = locationHref;
@@ -187,7 +203,7 @@ define([
          * Show the failing message
          * @private
          */
-        _showFailingMessage: function() {
+        _showFailingMessage: function () {
             this.element.find('.messages').html('');
             this._displayMessages('message-error error', $t('An error occurred, please try again later.'));
             this.element.find('.messages .message').show();

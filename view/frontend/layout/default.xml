@@ -35,6 +35,7 @@
         <referenceContainer name="before.body.end">
             <block class="PHPCuong\CustomerAccount\Block\Form\Login" name="customer-popup-login" template="PHPCuong_CustomerAccount::login.phtml" />
             <block class="PHPCuong\CustomerAccount\Block\Form\Register" name="customer-popup-register" template="PHPCuong_CustomerAccount::register.phtml" />
+            <block class="PHPCuong\CustomerAccount\Block\Form\Forgotpassword" name="customer-popup-forgotpassword" template="PHPCuong_CustomerAccount::forgotpassword.phtml" />
         </referenceContainer>
     </body>
 </page>

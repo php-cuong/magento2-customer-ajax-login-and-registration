@@ -14,3 +14,7 @@ Magento 2 Customer Ajax Login and Registration
 ## The popup customer registration form
 
 ![ScreenShot](https://raw.githubusercontent.com/php-cuong/magento2-customer-ajax-login-and-registration/master/Snapshot/registration-form.png)
+
+## The popup customer forgotpassword form
+
+![ScreenShot](https://raw.githubusercontent.com/php-cuong/magento2-customer-ajax-login-and-registration/master/Snapshot/forgotpassword-form.png)
