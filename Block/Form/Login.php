@@ -112,4 +112,14 @@ class Login extends \Magento\Framework\View\Element\Template
     {
         return $this->getUrl('customer/account/create');
     }
+
+    /**
+     * Retrieve forgot password URL
+     *
+     * @return string
+     */
+    public function getForgotpassword()
+    {
+        return $this->getUrl('customer/account/forgotpassword');
+    }
 }

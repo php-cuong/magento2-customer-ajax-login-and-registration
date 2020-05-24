@@ -69,6 +69,13 @@
                                 <div class="secondary"><a class="action remind" href="<?php /* @escapeNotVerified */ echo $block->getCustomerRegistrationUrl() ?>" id="customer-popup-registration"><span><?php /* @escapeNotVerified */ echo __('Create an Account') ?></span></a></div>
                             <?php endif; ?>
                         </div>
+                        <div class="actions-toolbar">
+                            <div class="secondary">
+                                <a class="action remind" href="<?= $block->getForgotpassword() ?>" id="customer-popup-forgot-password">
+                                    <span><?= __('Forgot Your Password') ?></span>
+                                </a>
+                            </div>
+                        </div>
                     </fieldset>
                 </form>
             </div>

@@ -20,14 +20,18 @@
  * @license     https://www.giaphugroup.com/LICENSE.txt
  */
 -->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Customer:etc/sections.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Customer:etc/sections.xsd">
     <action name="phpcuong/customer_ajax/register">
         <section name="checkout-data"/>
         <section name="cart"/>
         <section name="customer"/>
     </action>
     <action name="customer/ajax/login">
+        <section name="checkout-data"/>
+        <section name="cart"/>
+        <section name="customer"/>
+    </action>
+    <action name="phpcuong/customer_ajax/forgotpassword">
         <section name="checkout-data"/>
         <section name="cart"/>
         <section name="customer"/>
